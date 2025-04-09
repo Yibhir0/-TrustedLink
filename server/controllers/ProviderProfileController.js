@@ -19,3 +19,12 @@ export const getAllProfiles = async (req, res) => {
     const profiles = await ProviderProfile.find({}).populate('user');
     res.json(profiles);
 };
+
+export const getProviderById = async (req, res) => {
+    const id = req.params.id;
+    const provider = await ProviderProfile.findById(id).populate('user');
+    if (!provider) {
+        return res.status(404).json({ message: 'Provider not found' });
+    }
+    res.json(provider);
+}

@@ -22,7 +22,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'New York',
             phone: '123-456-7890',
-            bio: 'Expert in pipe systems.'
+            bio: 'Expert in pipe systems.',
+            profileImage: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250'
         },
         profile: {
             category: 'plumbing',
@@ -44,7 +45,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Chicago',
             phone: '987-654-3210',
-            bio: 'Handles all residential electrical work.'
+            bio: 'Handles all residential electrical work.',
+            profileImage: 'https://i.pravatar.cc/250?u=mail@ashallendesign.co.uk'
         },
         profile: {
             category: 'electrical',
@@ -66,7 +68,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Los Angeles',
             phone: '555-123-4567',
-            bio: 'Lawn care enthusiast.'
+            bio: 'Lawn care enthusiast.',
+            profileImage: 'https://robohash.org/mail@ashallendesign.co.uk'
         },
         profile: {
             category: 'landscaping',
@@ -88,7 +91,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Toronto',
             phone: '222-333-4444',
-            bio: 'Pipe repair specialist.'
+            bio: 'Pipe repair specialist.',
+            profileImage: 'http://placebeard.it/250/250'
         },
         profile: {
             category: 'plumbing',
@@ -110,7 +114,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Vancouver',
             phone: '333-222-1111',
-            bio: 'Commercial electrician.'
+            bio: 'Commercial electrician.',
+            profileImage: 'https://avatar.iran.liara.run/public/boy?username=Ash'
         },
         profile: {
             category: 'electrical',
@@ -132,7 +137,7 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Calgary',
             phone: '444-555-6666',
-            bio: 'Garden design and maintenance.'
+            profileImage: 'https://placebeard.it/250/250'
         },
         profile: {
             category: 'landscaping',
@@ -154,7 +159,8 @@ const providersWithProfiles = [
             role: 'provider',
             city: 'Montreal',
             phone: '123-123-1234',
-            bio: 'Fixes pipes and drains.'
+            bio: 'Fixes pipes and drains.',
+            profileImage: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250'
         },
         profile: {
             category: 'plumbing',
