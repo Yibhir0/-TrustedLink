@@ -38,7 +38,3 @@ The TrustedLink API provides endpoints to interact with the platform. Below is a
 
 http://localhost:3000/api
 
-```
-
-
-```
