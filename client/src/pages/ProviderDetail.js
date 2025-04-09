@@ -30,6 +30,7 @@ const ProviderDetail = () => {
                             <h2>{provider.user.firstName} {provider.user.lastName}</h2>
                             <p className="profile-bio">{provider.bio}. {provider.user.bio}.</p>
                         </div>
+                        <button className="book-button">📅 Book</button>
                     </div>
 
                     <div className="profile-details">
@@ -50,7 +51,7 @@ const ProviderDetail = () => {
                         ))}
                     </div>
 
-                    <button className="book-button">📅 Book</button>
+
                 </div>
             </div>
         </div>

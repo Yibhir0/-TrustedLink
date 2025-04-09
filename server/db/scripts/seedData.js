@@ -32,7 +32,11 @@ const providersWithProfiles = [
             city: 'New York',
             bio: 'Licensed plumber with 10+ years of experience.',
             rating: 4.8,
-            yearsOfExperience: 10
+            yearsOfExperience: 10,
+            workImages: [
+                'https://media.istockphoto.com/id/1516511531/photo/a-plumber-carefully-fixes-a-leak-in-a-sink-using-a-wrench.jpg?s=1024x1024&w=is&k=20&c=LkKMuHe7Uj0PjkyC0bn7HEQmQ8Iidl8B8_rqFiPSS2A=',
+                'https://media.istockphoto.com/id/169270269/photo/plumbers-working-on-pipes-under-sink.jpg?s=1024x1024&w=is&k=20&c=E_gFYtt4HfwqJHc9I2oqY1adEyIT-2lKimkkV5UWgR4=',
+            ]
         }
     },
     {
@@ -55,7 +59,11 @@ const providersWithProfiles = [
             city: 'Chicago',
             bio: 'Reliable electrician for homes and businesses.',
             rating: 4.6,
-            yearsOfExperience: 8
+            yearsOfExperience: 8,
+            workImages: [
+                'https://media.istockphoto.com/id/1411581327/photo/silhouette-electrician-work-on-high-ground-heavy-industry-concept-construction-of-the.jpg?s=612x612&w=0&k=20&c=Kozp-lrF2SKwShKMV3b6l-FrErAGw2hiXtSVVGIuu7A=',
+                'https://media.istockphoto.com/id/1405880267/photo/two-engineers-installing-solar-panels-on-roof.jpg?s=1024x1024&w=is&k=20&c=mskLiEze3fWKilJamAiSM5imZnX1MjhZ9V4q7TJTAVI=',
+            ],
         }
     },
     {
@@ -78,7 +86,11 @@ const providersWithProfiles = [
             city: 'Los Angeles',
             bio: 'Professional landscaper with passion for greenery.',
             rating: 5.0,
-            yearsOfExperience: 6
+            yearsOfExperience: 6,
+            workImages: [
+                'https://media.istockphoto.com/id/1166203849/photo/garden-worker-trimming-plants.jpg?s=1024x1024&w=is&k=20&c=rRJXcf-07pPi2wWrhw1IycK3SHECGtFkxUB1M3AFs9s=',
+                'https://media.istockphoto.com/id/1312760160/photo/big-garden-grass-field-mowing-by-caucasian-gardener.jpg?s=1024x1024&w=is&k=20&c=ln0D2ZTNy8nc-t5zeXecdXi_VlojH5HC3PrNmG9fqX8=',
+            ],
         }
     },
     {
@@ -101,7 +113,11 @@ const providersWithProfiles = [
             city: 'Toronto',
             bio: 'Fast and affordable plumbing services.',
             rating: 4.5,
-            yearsOfExperience: 7
+            yearsOfExperience: 7,
+            workImages: [
+                'https://media.istockphoto.com/id/1516511531/photo/a-plumber-carefully-fixes-a-leak-in-a-sink-using-a-wrench.jpg?s=1024x1024&w=is&k=20&c=LkKMuHe7Uj0PjkyC0bn7HEQmQ8Iidl8B8_rqFiPSS2A=',
+                'https://media.istockphoto.com/id/169270269/photo/plumbers-working-on-pipes-under-sink.jpg?s=1024x1024&w=is&k=20&c=E_gFYtt4HfwqJHc9I2oqY1adEyIT-2lKimkkV5UWgR4=',
+            ]
         }
     },
     {
@@ -124,7 +140,11 @@ const providersWithProfiles = [
             city: 'Vancouver',
             bio: 'Certified electrician with 12 years of experience.',
             rating: 4.9,
-            yearsOfExperience: 12
+            yearsOfExperience: 12,
+            workImages: [
+                'https://media.istockphoto.com/id/1411581327/photo/silhouette-electrician-work-on-high-ground-heavy-industry-concept-construction-of-the.jpg?s=612x612&w=0&k=20&c=Kozp-lrF2SKwShKMV3b6l-FrErAGw2hiXtSVVGIuu7A=',
+                'https://media.istockphoto.com/id/1405880267/photo/two-engineers-installing-solar-panels-on-roof.jpg?s=1024x1024&w=is&k=20&c=mskLiEze3fWKilJamAiSM5imZnX1MjhZ9V4q7TJTAVI=',
+            ],
         }
     },
     {
@@ -146,7 +166,12 @@ const providersWithProfiles = [
             city: 'Calgary',
             bio: 'Floral garden specialist and landscape designer.',
             rating: 4.4,
-            yearsOfExperience: 5
+            yearsOfExperience: 5,
+            workImages: [
+                'https://media.istockphoto.com/id/1166203849/photo/garden-worker-trimming-plants.jpg?s=1024x1024&w=is&k=20&c=rRJXcf-07pPi2wWrhw1IycK3SHECGtFkxUB1M3AFs9s=',
+                'https://media.istockphoto.com/id/1312760160/photo/big-garden-grass-field-mowing-by-caucasian-gardener.jpg?s=1024x1024&w=is&k=20&c=ln0D2ZTNy8nc-t5zeXecdXi_VlojH5HC3PrNmG9fqX8=',
+            ],
+
         }
     },
     {
@@ -169,7 +194,11 @@ const providersWithProfiles = [
             city: 'Montreal',
             bio: 'Emergency and regular plumbing services.',
             rating: 4.3,
-            yearsOfExperience: 9
+            yearsOfExperience: 9,
+            workImages: [
+                'https://media.istockphoto.com/id/1516511531/photo/a-plumber-carefully-fixes-a-leak-in-a-sink-using-a-wrench.jpg?s=1024x1024&w=is&k=20&c=LkKMuHe7Uj0PjkyC0bn7HEQmQ8Iidl8B8_rqFiPSS2A=',
+                'https://media.istockphoto.com/id/169270269/photo/plumbers-working-on-pipes-under-sink.jpg?s=1024x1024&w=is&k=20&c=E_gFYtt4HfwqJHc9I2oqY1adEyIT-2lKimkkV5UWgR4=',
+            ]
         }
     },
     {
@@ -191,7 +220,11 @@ const providersWithProfiles = [
             city: 'Ottawa',
             bio: 'Sustainable electrical solutions.',
             rating: 4.7,
-            yearsOfExperience: 6
+            yearsOfExperience: 6,
+            workImages: [
+                'https://media.istockphoto.com/id/1411581327/photo/silhouette-electrician-work-on-high-ground-heavy-industry-concept-construction-of-the.jpg?s=612x612&w=0&k=20&c=Kozp-lrF2SKwShKMV3b6l-FrErAGw2hiXtSVVGIuu7A=',
+                'https://media.istockphoto.com/id/1405880267/photo/two-engineers-installing-solar-panels-on-roof.jpg?s=1024x1024&w=is&k=20&c=mskLiEze3fWKilJamAiSM5imZnX1MjhZ9V4q7TJTAVI=',
+            ],
         }
     },
     {
@@ -213,7 +246,12 @@ const providersWithProfiles = [
             city: 'Edmonton',
             bio: 'Designs modern outdoor spaces.',
             rating: 4.9,
-            yearsOfExperience: 4
+            yearsOfExperience: 4,
+            workImages: [
+                'https://media.istockphoto.com/id/1166203849/photo/garden-worker-trimming-plants.jpg?s=1024x1024&w=is&k=20&c=rRJXcf-07pPi2wWrhw1IycK3SHECGtFkxUB1M3AFs9s=',
+                'https://media.istockphoto.com/id/1312760160/photo/big-garden-grass-field-mowing-by-caucasian-gardener.jpg?s=1024x1024&w=is&k=20&c=ln0D2ZTNy8nc-t5zeXecdXi_VlojH5HC3PrNmG9fqX8=',
+            ],
+
         }
     },
     {
@@ -235,7 +273,11 @@ const providersWithProfiles = [
             city: 'Halifax',
             bio: 'Certified for residential and industrial plumbing.',
             rating: 4.6,
-            yearsOfExperience: 11
+            yearsOfExperience: 11,
+            workImages: [
+                'https://media.istockphoto.com/id/1516511531/photo/a-plumber-carefully-fixes-a-leak-in-a-sink-using-a-wrench.jpg?s=1024x1024&w=is&k=20&c=LkKMuHe7Uj0PjkyC0bn7HEQmQ8Iidl8B8_rqFiPSS2A=',
+                'https://media.istockphoto.com/id/169270269/photo/plumbers-working-on-pipes-under-sink.jpg?s=1024x1024&w=is&k=20&c=E_gFYtt4HfwqJHc9I2oqY1adEyIT-2lKimkkV5UWgR4=',
+            ]
         }
     }
 ];
