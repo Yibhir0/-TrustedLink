@@ -7,6 +7,12 @@ const providerProfileSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+
+    service: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service',
+        required: true,
+    },
     hourlyRate: { type: Number, required: true },
     isVerified: { type: Boolean, default: false },
     category: {

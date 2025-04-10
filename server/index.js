@@ -6,6 +6,8 @@ import userRoutes from './routes/UserRoutes.js'; // Adjust the path as necessary
 import serviceRoutes from './routes/ServiceRoutes.js';
 import providerProfileRoutes from './routes/ProviderProfileRoutes.js';
 
+import bookingRoutes from './routes/BookingRoutes.js';
+
 
 const app = express();
 const PORT = 8080;
@@ -37,3 +39,4 @@ mongoose.connect(MONGO_URI, {
 app.use('/api/services', serviceRoutes);
 app.use('/api/providers', providerProfileRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/bookings', bookingRoutes);

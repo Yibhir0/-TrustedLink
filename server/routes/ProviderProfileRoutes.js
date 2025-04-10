@@ -14,4 +14,5 @@ router.post('/', createProvider);
 router.get('/admin/all', getAllProfiles); // needs middleware to verify admin
 
 
+
 export default router;

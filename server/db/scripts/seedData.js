@@ -3,6 +3,8 @@ import User from '../../models/User.js';
 import Service from '../../models/Service.js';
 import ProviderProfile from '../../models/ProviderProfile.js';
 
+import Booking from '../..//models/Booking.js';
+
 const MONGO_URI = 'mongodb://root:example@localhost:27017/trusted-link-db?authSource=admin';
 
 const services = [
@@ -347,6 +349,20 @@ const customerUsers = [
     }
 ];
 
+
+const dropAllIndexes = async () => {
+    try {
+        await User.collection.dropIndexes();
+        await Service.collection.dropIndexes();
+        await ProviderProfile.collection.dropIndexes();
+        await Booking.collection.dropIndexes();
+        console.log('✅ Dropped all indexes from User, Service, ProviderProfile, and Booking collections');
+    } catch (error) {
+        console.warn('⚠️ Index drop warning:', error.message);
+    }
+};
+
+
 const seed = async () => {
     try {
         await mongoose.connect(MONGO_URI);
@@ -355,17 +371,29 @@ const seed = async () => {
         await User.deleteMany();
         await Service.deleteMany();
         await ProviderProfile.deleteMany();
+        await Booking.deleteMany();
+
+        await dropAllIndexes();
 
         // Seed services
         const insertedServices = await Service.insertMany(services);
         console.log(`✅ Inserted ${insertedServices.length} services`);
 
+
+        const serviceObj = {};
+        insertedServices.forEach(service => {
+            serviceObj[service.category] = service;
+        });
+
         // Seed providers + linked profiles
         for (const provider of providersWithProfiles) {
             const createdUser = await User.create(provider.user);
+
+            const matchedServiceId = serviceObj[provider.profile.category];
             await ProviderProfile.create({
                 ...provider.profile,
-                user: createdUser._id
+                user: createdUser._id,
+                service: matchedServiceId
             });
             console.log(` Linked profile to user: ${createdUser.username}`);
         }
@@ -379,6 +407,71 @@ const seed = async () => {
             const createdCustomer = await User.create(customer);
             console.log(` Customer created: ${createdCustomer.username}`);
         }
+
+        // Create mappings for users and services
+        const allUsers = await User.find();
+        const allServices = await Service.find();
+
+        const userMap = Object.fromEntries(allUsers.map(user => [user.username, user._id]));
+        const serviceMap = Object.fromEntries(allServices.map(service => [service.name, service._id]));
+
+        const dynamicBookings = [
+            {
+                customerId: userMap['customer1'],
+                providerId: userMap['johnplumber'],
+                serviceId: serviceMap['Plumbing Repair'],
+                status: 'requested',
+                scheduledDate: new Date('2025-04-15T10:00:00Z'),
+                description: 'Fix leaking kitchen sink and replace pipe fittings.',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                customerId: userMap['customer2'],
+                providerId: userMap['sallyspark'],
+                serviceId: serviceMap['Electrical Repair'],
+                status: 'accepted',
+                scheduledDate: new Date('2025-04-17T14:30:00Z'),
+                description: 'Install new ceiling fans and check wiring.',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                customerId: userMap['customer3'],
+                providerId: userMap['mikelawn'],
+                serviceId: serviceMap['Lawn Maintenance'],
+                status: 'completed',
+                scheduledDate: new Date('2025-04-10T09:00:00Z'),
+                description: 'Weekly lawn mowing and seasonal flower planting.',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                customerId: userMap['customer4'],
+                providerId: userMap['johnplumber'],
+                serviceId: serviceMap['Plumbing Repair'],
+                status: 'cancelled',
+                scheduledDate: new Date('2025-04-20T16:00:00Z'),
+                description: 'Emergency pipe burst repair.',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                customerId: userMap['customer5'],
+                providerId: userMap['sallyspark'],
+                serviceId: serviceMap['Electrical Repair'],
+                status: 'rejected',
+                scheduledDate: new Date('2025-04-19T11:00:00Z'),
+                description: 'Upgrade circuit breaker panel.',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ];
+
+        // Insert bookings
+        await Booking.insertMany(dynamicBookings);
+        console.log(`Inserted ${dynamicBookings.length} bookings`);
+
 
         console.log('Seeding completed successfully');
     } catch (err) {
