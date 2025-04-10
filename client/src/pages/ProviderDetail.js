@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../css/ProviderDetail.css';
 
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../contexts/AuthProvider';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -25,8 +25,8 @@ const ProviderDetail = () => {
 
     const handleBookClick = () => {
 
-        const loggedInCustomerId = currentUser._id; // replace with real logged-in customer ID
-        navigate(`/book/${provider.user._id}/${provider.service}/${loggedInCustomerId}`); // replace with real customer ID
+        const loggedInCustomerId = currentUser?._id; // replace with real logged-in customer ID
+        navigate(`/book/${provider.user._id}/${provider?.service}/${loggedInCustomerId}`); // replace with real customer ID
     };
 
     if (!provider) return <div>Loading...</div>;

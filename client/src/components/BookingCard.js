@@ -5,8 +5,6 @@ import ConfirmModal from './ConfirmModal';
 
 const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
 
-    console.log('BookingCard', booking);
-
     const [showConfirm, setShowConfirm] = useState(false);
 
     const handleDelete = () => {

@@ -5,6 +5,7 @@ import Service from '../models/Service.js';
 export const getAllBookings = async (req, res) => {
     try {
         const bookings = await Booking.find()
+            .sort({ createdAt: -1 })
             .populate('customerId')
             .populate('providerId')
             .populate('serviceId');
@@ -18,6 +19,7 @@ export const getBookingsByCustomerId = async (req, res) => {
     const { customerId } = req.params;
     try {
         const bookings = await Booking.find({ customerId })
+            .sort({ createdAt: -1 })
             .populate('providerId')
             .populate('serviceId')
             .populate('customerId');
@@ -31,6 +33,7 @@ export const getBookingsByProviderId = async (req, res) => {
     const { providerId } = req.params;
     try {
         const bookings = await Booking.find({ providerId })
+            .sort({ createdAt: -1 })
             .populate('customerId')
             .populate('serviceId')
             .populate('providerId');
@@ -45,6 +48,7 @@ export const getBookingsByServiceId = async (req, res) => {
     const { serviceId } = req.params;
     try {
         const bookings = await Booking.find({ serviceId })
+            .sort({ createdAt: -1 })
             .populate('customerId')
             .populate('providerId')
             .populate('serviceId');

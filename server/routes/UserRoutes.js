@@ -1,9 +1,17 @@
 import express from 'express';
-import { createCustomer, getAllCustomers } from '../controllers/UserController.js';
+import {
+    createCustomer,
+    getAllCustomers,
+    loginUser,
+    deleteUser
+
+} from '../controllers/UserController.js';
 
 const router = express.Router();
 
 router.post('/customers', createCustomer);
 router.get('/admin/customers', getAllCustomers); // needs admin check
+router.post('/login', loginUser);
+router.delete('/admin/customers/:id', deleteUser); // needs admin check
 
 export default router;
