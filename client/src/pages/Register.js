@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import '../css/Register.css';
 
 const Register = () => {
-
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
@@ -15,6 +14,11 @@ const Register = () => {
         phone: '',
         profileImage: '',
         role: 'customer',
+        cardHolderName: '',
+        cardNumber: '',
+        expiryMonth: '',
+        expiryYear: '',
+        cvc: ''
     });
 
     const handleChange = (e) => {
@@ -44,7 +48,7 @@ const Register = () => {
     };
 
     return (
-        <div className="register-container">
+        <div className="register-container full-page">
             <form className="register-form" onSubmit={handleSubmit}>
                 <h2>📝 Create Your Account</h2>
 
@@ -66,6 +70,21 @@ const Register = () => {
                 <div className="form-grid">
                     <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
                     <input type="text" name="profileImage" placeholder="Profile Image URL (optional)" value={formData.profileImage} onChange={handleChange} />
+                </div>
+
+                <h3>💳 Payment Information</h3>
+                <div className="form-grid">
+                    <input type="text" name="cardHolderName" placeholder="Cardholder Name" value={formData.cardHolderName} onChange={handleChange} required />
+                    <input type="text" name="cardNumber" placeholder="Card Number" value={formData.cardNumber} onChange={handleChange} required />
+                </div>
+
+                <div className="form-grid">
+                    <input type="number" name="expiryMonth" placeholder="Expiry Month (MM)" min="1" max="12" value={formData.expiryMonth} onChange={handleChange} required />
+                    <input type="number" name="expiryYear" placeholder="Expiry Year (YYYY)" min="2024" value={formData.expiryYear} onChange={handleChange} required />
+                </div>
+
+                <div className="form-grid">
+                    <input type="text" name="cvc" placeholder="CVC" value={formData.cvc} onChange={handleChange} required />
                 </div>
 
                 <button type="submit" className="btn-register">Register</button>

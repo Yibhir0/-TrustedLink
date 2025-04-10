@@ -7,15 +7,26 @@ import PaymentCard from '../models/PaymentCard.js';
 
 export const createCustomer = async (req, res) => {
     try {
-        const { card, ...userData } = req.body;
+
+
+        const userData = req.body;
 
         // Create the user with role = customer
         const user = await User.create({ ...userData, role: 'customer' });
 
+        const card = {
+
+            cardHolderName: userData.cardHolderName,
+            cardNumber: userData.cardNumber,
+            expiryMonth: userData.expiryMonth,
+            expiryYear: userData.expiryYear,
+            cvc: userData.cvc
+        }
+
         // If card info is provided, create a PaymentCard linked to this user
         if (card) {
             await PaymentCard.create({
-                userId: user._id,
+                user: user._id,
                 ...card
             });
         }

@@ -7,6 +7,8 @@ import Booking from '../..//models/Booking.js';
 
 import Review from '../../models/Review.js';
 
+import PaymentCard from '../../models/PaymentCard.js';
+
 const MONGO_URI = 'mongodb://root:example@localhost:27017/trusted-link-db?authSource=admin';
 
 const services = [
@@ -308,6 +310,13 @@ const customerUsers = [
         role: 'customer',
         city: 'Toronto',
         phone: '111-111-1111',
+        card: {
+            cardHolderName: 'Alice Smith',
+            cardNumber: '4111111111111111',
+            expiryMonth: 12,
+            expiryYear: 2026,
+            cvc: '123'
+        }
     },
     {
         username: 'customer2',
@@ -317,8 +326,16 @@ const customerUsers = [
         lastName: 'Johnson',
         role: 'customer',
         city: 'Vancouver',
-        phone: '222-222-2222'
+        phone: '222-222-2222',
+        card: {
+            cardHolderName: 'Brian Johnson',
+            cardNumber: '4242424242424242',
+            expiryMonth: 6,
+            expiryYear: 2027,
+            cvc: '456'
+        }
     },
+
     {
         username: 'customer3',
         password: 'pass123',
@@ -327,7 +344,14 @@ const customerUsers = [
         lastName: 'Lee',
         role: 'customer',
         city: 'Calgary',
-        phone: '333-333-3333'
+        phone: '333-333-3333',
+        card: {
+            cardHolderName: 'Carol Lee',
+            cardNumber: '5555555555554444',
+            expiryMonth: 3,
+            expiryYear: 2028,
+            cvc: '789'
+        }
     },
     {
         username: 'customer4',
@@ -337,7 +361,14 @@ const customerUsers = [
         lastName: 'Wong',
         role: 'customer',
         city: 'Ottawa',
-        phone: '444-444-4444'
+        phone: '444-444-4444',
+        card: {
+            cardHolderName: 'David Wong',
+            cardNumber: '6011000990139424',
+            expiryMonth: 11,
+            expiryYear: 2028,
+            cvc: '321'
+        }
     },
     {
         username: 'customer5',
@@ -347,7 +378,14 @@ const customerUsers = [
         lastName: 'Brown',
         role: 'customer',
         city: 'Halifax',
-        phone: '555-555-5555'
+        phone: '555-555-5555',
+        card: {
+            cardHolderName: 'Eva Brown',
+            cardNumber: '371449635398431',
+            expiryMonth: 9,
+            expiryYear: 2029,
+            cvc: '654'
+        }
     }
 ];
 
@@ -361,6 +399,7 @@ const dropAllIndexes = async () => {
         await ProviderProfile.collection.dropIndexes();
         await Booking.collection.dropIndexes();
         await Review.collection.dropIndexes();
+        await PaymentCard.collection.dropIndexes();
         console.log('✅ Dropped all indexes from User, Service, ProviderProfile, and Booking collections');
     } catch (error) {
         console.warn('⚠️ Index drop warning:', error.message);
@@ -378,6 +417,7 @@ const seed = async () => {
         await ProviderProfile.deleteMany();
         await Booking.deleteMany();
         await Review.deleteMany();
+        await PaymentCard.deleteMany();
 
         await dropAllIndexes();
 
@@ -412,6 +452,13 @@ const seed = async () => {
         for (const customer of customerUsers) {
             const createdCustomer = await User.create(customer);
             console.log(` Customer created: ${createdCustomer.username}`);
+            if (customer.card) {
+                await PaymentCard.create({
+                    user: createdCustomer._id,
+                    ...customer.card
+                });
+                console.log(` Card created for customer: ${createdCustomer.username}`);
+            }
         }
 
         // Create mappings for users and services
