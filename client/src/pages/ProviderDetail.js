@@ -7,6 +7,8 @@ import { useAuth } from '../contexts/AuthProvider';
 
 import { useNavigate } from 'react-router-dom';
 
+import ReviewList from "../components/ReviewList";
+
 // inside your component:
 
 const ProviderDetail = () => {
@@ -64,6 +66,8 @@ const ProviderDetail = () => {
                             <img key={idx} src={url} alt={`Work ${idx + 1}`} className="work-img" />
                         ))}
                     </div>
+
+                    <ReviewList providerId={id} />
 
 
                 </div>

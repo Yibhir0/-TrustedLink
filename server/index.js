@@ -8,6 +8,8 @@ import providerProfileRoutes from './routes/ProviderProfileRoutes.js';
 
 import bookingRoutes from './routes/BookingRoutes.js';
 
+import reviewRoutes from './routes/ReviewRoutes.js'; // Adjust the path as necessary
+
 
 const app = express();
 const PORT = 8080;
@@ -40,3 +42,4 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/providers', providerProfileRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/reviews', reviewRoutes); // Adjust the path as necessary

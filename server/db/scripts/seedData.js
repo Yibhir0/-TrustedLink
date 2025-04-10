@@ -5,6 +5,8 @@ import ProviderProfile from '../../models/ProviderProfile.js';
 
 import Booking from '../..//models/Booking.js';
 
+import Review from '../../models/Review.js';
+
 const MONGO_URI = 'mongodb://root:example@localhost:27017/trusted-link-db?authSource=admin';
 
 const services = [
@@ -350,12 +352,15 @@ const customerUsers = [
 ];
 
 
+
+
 const dropAllIndexes = async () => {
     try {
         await User.collection.dropIndexes();
         await Service.collection.dropIndexes();
         await ProviderProfile.collection.dropIndexes();
         await Booking.collection.dropIndexes();
+        await Review.collection.dropIndexes();
         console.log('✅ Dropped all indexes from User, Service, ProviderProfile, and Booking collections');
     } catch (error) {
         console.warn('⚠️ Index drop warning:', error.message);
@@ -372,6 +377,7 @@ const seed = async () => {
         await Service.deleteMany();
         await ProviderProfile.deleteMany();
         await Booking.deleteMany();
+        await Review.deleteMany();
 
         await dropAllIndexes();
 
@@ -469,9 +475,71 @@ const seed = async () => {
         ];
 
         // Insert bookings
-        await Booking.insertMany(dynamicBookings);
+        const insertedBookings = await Booking.insertMany(dynamicBookings);
         console.log(`Inserted ${dynamicBookings.length} bookings`);
 
+
+        const dynamicReviews = [
+            {
+                providerUsername: 'johnplumber',
+                customerUsername: 'customer1',
+                rating: 5,
+                comment: "Outstanding work and very professional. (customer1 reviewing johnplumber)"
+            },
+            {
+                providerUsername: 'sallyspark',
+                customerUsername: 'customer2',
+                rating: 4,
+                comment: "Satisfied with the results. (customer2 reviewing sallyspark)"
+            },
+            {
+                providerUsername: 'mikelawn',
+                customerUsername: 'customer3',
+                rating: 3,
+                comment: "Good, but could be improved. (customer3 reviewing mikelawn)"
+            },
+            {
+                providerUsername: 'johnplumber',
+                customerUsername: 'customer4',
+                rating: 5,
+                comment: "Excellent experience from start to finish. (customer4 reviewing johnplumber)"
+            },
+            {
+                providerUsername: 'sallyspark',
+                customerUsername: 'customer5',
+                rating: 5,
+                comment: "Excellent experience from start to finish. (customer5 reviewing sallyspark)"
+            }
+        ];
+
+
+
+        const userMap1 = Object.fromEntries(allUsers.map(user => [user.username, user._id.toString()]));
+
+        const reviewDocs = dynamicReviews.map(r => {
+            const providerId = userMap1[r.providerUsername];
+            const customerId = userMap1[r.customerUsername];
+
+            const booking = insertedBookings.find(b =>
+                b.providerId.toString() === providerId &&
+                b.customerId.toString() === customerId
+            );
+
+            if (!booking) {
+                console.warn(`⚠️ No booking found for ${r.customerUsername} -> ${r.providerUsername}`);
+            }
+
+            return booking && {
+                providerId,
+                customerId,
+                bookingId: booking._id,
+                rating: r.rating,
+                comment: r.comment
+            };
+        }).filter(Boolean); // filter out any undefined/null reviews
+
+        await Review.insertMany(reviewDocs);
+        console.log(`✅ Inserted ${reviewDocs.length} reviews`);
 
         console.log('Seeding completed successfully');
     } catch (err) {

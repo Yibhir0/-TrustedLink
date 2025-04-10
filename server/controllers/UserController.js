@@ -1,10 +1,32 @@
-import User from '../models/User.js';
+
 import jwt from 'jsonwebtoken';
 
+
+import User from '../models/User.js';
+import PaymentCard from '../models/PaymentCard.js';
+
 export const createCustomer = async (req, res) => {
-    const user = await User.create({ ...req.body, role: 'customer' });
-    res.status(201).json(user);
+    try {
+        const { card, ...userData } = req.body;
+
+        // Create the user with role = customer
+        const user = await User.create({ ...userData, role: 'customer' });
+
+        // If card info is provided, create a PaymentCard linked to this user
+        if (card) {
+            await PaymentCard.create({
+                userId: user._id,
+                ...card
+            });
+        }
+
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('Failed to create customer:', error);
+        res.status(500).json({ error: 'Failed to create customer' });
+    }
 };
+
 
 export const getAllCustomers = async (req, res) => {
     // if (req.user.role !== 'admin') return res.status(403).json({ error: 'Unauthorized' });

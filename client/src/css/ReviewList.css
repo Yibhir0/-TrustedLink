@@ -1,0 +1,16 @@
+.review-list {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.review-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.loading, .no-reviews {
+    font-style: italic;
+    color: #555;
+}

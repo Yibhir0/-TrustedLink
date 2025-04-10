@@ -1,11 +1,13 @@
 import '../css/Booking.css';
 import { useState } from 'react';
 import ConfirmModal from './ConfirmModal';
+import ReviewModal from './ReviewModal';
 
 
 const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
 
     const [showConfirm, setShowConfirm] = useState(false);
+    const [showReviewModal, setShowReviewModal] = useState(false);
 
     const handleDelete = () => {
         onDelete(booking._id);
@@ -14,6 +16,37 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
     const handleStatusChange = (newStatus) => {
         onUpdate(newStatus, booking._id);
 
+    };
+
+    const handleReviewSubmit = async ({ rating, comment }) => {
+
+
+        try {
+            const res = await fetch('http://localhost:8080/api/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    rating,
+                    comment,
+                    providerId: booking.providerId._id,
+                    customerId: booking.customerId._id,
+                    bookingId: booking._id,
+                }),
+            });
+
+            if (!res.ok) {
+                throw new Error('Failed to submit review');
+            }
+
+            const data = await res.json();
+            console.log(" Review submitted successfully:", data);
+            alert("Thanks for your feedback!");
+        } catch (error) {
+            console.error("Failed to submit review:", error);
+            alert("There was an error submitting your review. Please try again.");
+        }
     };
 
     return (
@@ -58,6 +91,12 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
                     </button>
                 )}
 
+                {role === 'customer' && booking.status === 'approved' && (
+                    <button className="approve-btn" onClick={() => setShowReviewModal(true)}>
+                        ✍️ Leave a Review
+                    </button>
+                )}
+
                 {role === 'customer' && booking.status === 'completed' && (
                     <button className="approve-btn" onClick={() => handleStatusChange('approved')}>
                         👍 Approve
@@ -78,6 +117,13 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
                     message="Are you sure you want to delete this booking?"
                     onConfirm={handleDelete}
                     onCancel={() => setShowConfirm(false)}
+                />
+            )}
+            {showReviewModal && (
+                <ReviewModal
+                    isOpen={showReviewModal}
+                    onClose={() => setShowReviewModal(false)}
+                    onSubmit={handleReviewSubmit}
                 />
             )}
         </div>
