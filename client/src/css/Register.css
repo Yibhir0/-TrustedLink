@@ -1,0 +1,82 @@
+.register-container {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .register-form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .register-form h2 {
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 2rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .register-form input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    outline: none;
+    transition: 0.2s;
+  }
+  
+  .register-form input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  
+  .btn-register {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .btn-register:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .login-redirect {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #6b7280;
+  }
+  
+  .login-redirect a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+  }
+  
+  .login-redirect a:hover {
+    text-decoration: underline;
+  }
+  

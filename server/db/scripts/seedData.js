@@ -305,7 +305,7 @@ const customerUsers = [
         lastName: 'Smith',
         role: 'customer',
         city: 'Toronto',
-        phone: '111-111-1111'
+        phone: '111-111-1111',
     },
     {
         username: 'customer2',

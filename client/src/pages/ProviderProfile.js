@@ -1,15 +1,14 @@
 // ProviderProfileList.jsx
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import '../css/ProviderProfile.css';
 
 const ProviderProfile = () => {
+
     const { category } = useParams();
     const [providers, setProviders] = useState([]);
     const navigate = useNavigate();
-
-    console.log(providers);
 
     const handleProviderClick = (id) => {
         navigate(`/providers/${id}`);
