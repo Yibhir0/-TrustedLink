@@ -1,5 +1,5 @@
 
-import './App.css';
+// import './App.css';
 
 import AppRoutes from './router/AppRoutes';
 import Navbar from './components/Navbar';

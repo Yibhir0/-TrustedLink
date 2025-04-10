@@ -1,0 +1,59 @@
+.booking-list {
+    padding: 2rem;
+    background-color: #f9fafb;
+  }
+  
+  .booking-card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .booking-info p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .status-chip {
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-weight: bold;
+    display: inline-block;
+    text-transform: capitalize;
+  }
+  
+  .gray { background: #e5e7eb; color: #374151; }
+  .blue { background: #dbeafe; color: #2563eb; }
+  .green { background: #dcfce7; color: #16a34a; }
+  .emerald { background: #d1fae5; color: #059669; }
+  .red { background: #fee2e2; color: #dc2626; }
+  .orange { background: #ffedd5; color: #ea580c; }
+  
+  .booking-actions button {
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    transition: background 0.2s;
+  }
+  
+  .booking-actions button:hover {
+    background: #1d4ed8;
+  }
+  
+  .delete-btn {
+    background: #ef4444;
+  }
+  
+  .delete-btn:hover {
+    background: #b91c1c;
+  }
+  

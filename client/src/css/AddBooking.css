@@ -1,0 +1,121 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #f9fafb;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #111827;
+  }
+  
+  /* Booking Page Layout */
+  .booking-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    min-height: 100vh;
+    background: linear-gradient(to right, #e0ecff, #f7f9fb);
+  }
+  
+  /* Booking Card */
+  .booking-form-container {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 1.25rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.4s ease;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .booking-form-container:hover {
+    transform: scale(1.01);
+  }
+  
+  /* Title */
+  .booking-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d4ed8;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  /* Labels */
+  .booking-form-container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+  }
+  
+  /* Inputs and Textarea */
+  .booking-input,
+  .booking-textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  
+  .booking-input:focus,
+  .booking-textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  
+  .booking-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* Submit Button */
+  .booking-submit {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #2563eb;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-submit:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 600px) {
+    .booking-form-container {
+      padding: 2rem;
+    }
+  
+    .booking-title {
+      font-size: 1.5rem;
+    }
+  }
+  

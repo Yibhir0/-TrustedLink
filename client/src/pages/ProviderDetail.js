@@ -3,12 +3,18 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../css/ProviderDetail.css';
 
+import { useAuth } from '../hooks/useAuth';
+
+import { useNavigate } from 'react-router-dom';
+
+// inside your component:
 
 const ProviderDetail = () => {
     const { id } = useParams();
     const [provider, setProvider] = useState(null);
 
-    console.log(provider);
+    const navigate = useNavigate();
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/providers/${id}`)
@@ -17,7 +23,15 @@ const ProviderDetail = () => {
             .catch(err => console.error('Error fetching provider:', err));
     }, [id]);
 
+    const handleBookClick = () => {
+
+        const loggedInCustomerId = currentUser._id; // replace with real logged-in customer ID
+        navigate(`/book/${provider.user._id}/${provider.service}/${loggedInCustomerId}`); // replace with real customer ID
+    };
+
     if (!provider) return <div>Loading...</div>;
+
+
 
     return (
         <div className="profile-page">
@@ -30,7 +44,7 @@ const ProviderDetail = () => {
                             <h2>{provider.user.firstName} {provider.user.lastName}</h2>
                             <p className="profile-bio">{provider.bio}. {provider.user.bio}.</p>
                         </div>
-                        <button className="book-button">📅 Book</button>
+                        <button className="book-button" onClick={handleBookClick}>📅 Book</button>
                     </div>
 
                     <div className="profile-details">
