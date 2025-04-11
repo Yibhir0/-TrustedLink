@@ -15,22 +15,22 @@ const InvoicePage = () => {
             description: 'Deep cleaning for 2-bedroom apartment'
         },
         customer: {
-            firstName: 'Abderrahmane',
-            lastName: 'Boulmalf',
-            email: 'abderrahmane@example.com',
-            phone: '514-555-1234',
+            firstName: 'Mocro',
+            lastName: 'Mafia',
+            email: 'mocromafia@example.com',
+            phone: '514-445-1234',
             city: 'Montreal'
         },
         provider: {
-            firstName: 'Fatima',
-            lastName: 'Zahra',
-            email: 'fatima.provider@example.com',
+            firstName: 'hassan',
+            lastName: 'provider',
+            email: 'hassan.provider@example.com',
             phone: '514-999-4321'
         }
     };
 
     const paymentCard = {
-        cardHolderName: 'Abderrahmane Boulmalf',
+        cardHolderName: 'Mocro Mafia',
         cardNumber: '4242424242424242',
         expiryMonth: '08',
         expiryYear: '2026'
