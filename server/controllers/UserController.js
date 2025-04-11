@@ -90,3 +90,93 @@ export const deleteUser = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 }
+
+export const getCustomer = async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+        // Fetch the user by ID
+        const user = await User.findById(id).lean(); // lean() returns a plain object
+        if (!user) {
+            return res.status(404).json({ error: 'Customer not found' });
+        }
+
+        // Fetch the associated payment card
+        const paymentCard = await PaymentCard.findOne({ user: id }).lean();
+
+        // Combine and respond
+        res.json({
+            ...user,
+            paymentCard: paymentCard || null
+        });
+
+    } catch (err) {
+        console.error('Error fetching customer or payment card:', err);
+        res.status(500).json({ error: 'Server error' });
+    }
+}
+export const updateCustomer = async (req, res) => {
+    const { id } = req.params;
+    const {
+        username,
+        password,
+        email,
+        firstName,
+        lastName,
+        city,
+        phone,
+        profileImage,
+        role,
+        cardHolderName,
+        cardNumber,
+        expiryMonth,
+        expiryYear,
+        cvc
+    } = req.body;
+
+    try {
+        // Update User data
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            {
+                username,
+                password, // hash if necessary
+                email,
+                firstName,
+                lastName,
+                city,
+                phone,
+                profileImage,
+                role
+            },
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update PaymentCard where user == id
+        const updatedCard = await PaymentCard.findOneAndUpdate(
+            { user: id },
+            {
+                cardHolderName,
+                cardNumber,
+                expiryMonth,
+                expiryYear,
+                cvc
+            },
+            { new: true, upsert: true } // upsert in case it doesn't exist yet
+        );
+
+        return res.status(200).json({
+            message: 'Customer and payment card updated successfully',
+            user: updatedUser,
+            paymentCard: updatedCard
+        });
+    } catch (error) {
+        console.error('Error updating customer:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};

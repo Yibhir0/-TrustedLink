@@ -11,6 +11,7 @@ import AdminDashBoard from '../pages/AdminDashBoard';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import AddProvider from '../pages/AddProvider';
+import AccountPage from '../pages/AccountPage';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -36,6 +37,9 @@ const AppRoutes = () => {
                     <Route path="/dashboard" element={<AdminDashBoard />} />
                 ) : (
                     <Route path="/bookings" element={<BookingPage />} />
+                )}
+                {currentUser?.role === 'customer' && (
+                    <Route path="/account" element={<AccountPage />} />
                 )}
             </Route>
         </Routes>

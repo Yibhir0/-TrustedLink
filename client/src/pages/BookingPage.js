@@ -30,12 +30,15 @@ const BookingPage = () => {
                 </div>
 
                 <div className="booking-list-wrapper">
-                    {currentUser?.role === 'admin' && selectedService && (
-                        <BookingList type="admin" id={selectedService._id} />
-                    )}
-                    {currentUser?.role !== 'admin' && (
-                        <BookingList type={currentUser?.role} id={currentUser?._id} />
-                    )}
+                    <section className="booking-section">
+                        {currentUser?.role === 'admin' && selectedService && (
+                            <BookingList type="admin" id={selectedService._id} />
+                        )}
+                        {currentUser?.role !== 'admin' && (
+                            <BookingList type={currentUser?.role} id={currentUser?._id} />
+                        )}
+                    </section>
+
                 </div>
             </div>
         </div>
