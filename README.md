@@ -1,3 +1,13 @@
+Zeiad Badawy 40247477  
+
+Miskat Mahmud 40250110  
+
+Yassine Ibhir 40251116  
+
+Mohamed Saidi 40248103  
+
+Sadee Mohammad Shadman 40236919  
+
 # TrustedLink
 
 TrustedLink is a service-matching platform that connects customers with service providers in various categories such as plumbing, electrical, and landscaping.
@@ -8,11 +18,12 @@ TrustedLink is a service-matching platform that connects customers with service 
 
 - Node.js (v16 or later)
 - Docker (for MongoDB setup)
+- Make sure you have the docker installed and running before attemting to run backend
 
 ### Steps to Set Up and Run the backend
 
 ```bash
-git clone git@github.com:Yibhir0/2025-TrustedLink.git
+git clone https://github.com/Yibhir0/2025-TrustedLink.git
 cd 2025-TrustedLink/server
 cd ./db
 docker-compose up -d
