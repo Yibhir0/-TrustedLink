@@ -18,7 +18,7 @@ TrustedLink is a service-matching platform that connects customers with service 
 
 - Node.js (v16 or later)
 - Docker (for MongoDB setup)
-- Make sure you have the docker installed and running before attemting to run backend
+- Make sure you have the docker installed and running before attempting to run backend
 
 ### Steps to Set Up and Run the backend
 
