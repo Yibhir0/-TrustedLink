@@ -2,20 +2,26 @@ import '../css/Booking.css';
 import { useState } from 'react';
 import ConfirmModal from './ConfirmModal';
 import ReviewModal from './ReviewModal';
-
+import { useNavigate } from 'react-router-dom';
 
 const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
 
     const [showConfirm, setShowConfirm] = useState(false);
     const [showReviewModal, setShowReviewModal] = useState(false);
+    const navigate = useNavigate();
 
     const handleDelete = () => {
         onDelete(booking._id);
     };
 
     const handleStatusChange = (newStatus) => {
+
         onUpdate(newStatus, booking._id);
 
+    };
+
+    const handleViewInvoice = (booking) => {
+        navigate('/invoice');
     };
 
     const handleReviewSubmit = async ({ rating, comment }) => {
@@ -43,6 +49,7 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
             const data = await res.json();
             console.log(" Review submitted successfully:", data);
             alert("Thanks for your feedback!");
+            handleStatusChange('success');
         } catch (error) {
             console.error("Failed to submit review:", error);
             alert("There was an error submitting your review. Please try again.");
@@ -97,6 +104,8 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
                     </button>
                 )}
 
+
+
                 {role === 'customer' && booking.status === 'completed' && (
                     <button className="approve-btn" onClick={() => handleStatusChange('approved')}>
                         👍 Approve
@@ -109,6 +118,15 @@ const BookingCard = ({ booking, role, onDelete, onUpdate }) => {
                         onClick={() => handleStatusChange('cancelled')}
                     >
                         🚫 Cancel
+                    </button>
+                )}
+
+                {role === 'customer' && booking.status === 'success' && (
+                    <button
+                        className="secondary-btn"
+                        onClick={() => handleViewInvoice()}
+                    >
+                        🧾 Invoice
                     </button>
                 )}
             </div>

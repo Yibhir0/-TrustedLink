@@ -150,6 +150,7 @@ body {
 .status-approved   { background: #d1fae5; color: #059669; }
 .status-rejected   { background: #fee2e2; color: #dc2626; }
 .status-cancelled  { background: #ffedd5; color: #ea580c; }
+.status-success    { background: #d1fae5; color: #059669; }
 
 .booking-actions {
   display: flex;

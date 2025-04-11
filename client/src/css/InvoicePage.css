@@ -1,0 +1,76 @@
+.invoice-page {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #f9fafb;
+  }
+  
+  .invoice-container {
+    width: 100%;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  
+  .invoice-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .invoice-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .invoice-id,
+  .invoice-date {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .invoice-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2563eb;
+  }
+  
+  .info-pair {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .invoice-divider {
+    margin: 1.5rem 0;
+    border: none;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+  
+  .invoice-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+  
+  .download-btn {
+    padding: 0.6rem 1.2rem;
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .download-btn:hover {
+    background-color: #1e40af;
+  }
+  

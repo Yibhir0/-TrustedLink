@@ -40,6 +40,7 @@ const BookingList = ({ type, id }) => {
     };
 
     const handleStatusChange = (newStatus, id) => {
+
         fetch(`http://localhost:8080/api/bookings/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },

@@ -14,6 +14,7 @@ import AddProvider from '../pages/AddProvider';
 import AccountPage from '../pages/AccountPage';
 
 import PrivateRoute from './PrivateRoute';
+import InvoicePage from '../pages/InvoicePage';
 
 const AppRoutes = () => {
     const { currentUser } = useAuth();
@@ -31,6 +32,7 @@ const AppRoutes = () => {
             <Route element={<PrivateRoute />}>
                 <Route path="/book/:providerId/:serviceId/:customerId" element={<AddBooking />} />
                 <Route path="/add-provider" element={<AddProvider />} />
+                <Route path="/invoice" element={<InvoicePage />} />
 
                 {/* Role-based routing */}
                 {currentUser?.role === 'admin' ? (
