@@ -56,6 +56,18 @@ password: 'admin123',
 
 #### Provider user
 
+plumber :  
+
+username: 'johnplumber',  
+password: 'pass123',  
+
+electrician:  
+
+
+
+
+
+
 
 
 
