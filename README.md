@@ -43,9 +43,19 @@ npm start
 
 ### API Documentation
 
-The TrustedLink API provides endpoints to interact with the platform. Below is a summary of the available endpoints:
+The TrustedLink API provides endpoints to interact with the platform
 
 #### Base URL
 
 http://localhost:3000/api
+
+#### Admin user
+
+username: 'adminmaster',  
+password: 'admin123',  
+
+#### Provider user
+
+
+
 
